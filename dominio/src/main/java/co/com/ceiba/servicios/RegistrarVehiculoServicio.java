@@ -1,7 +1,9 @@
 package co.com.ceiba.servicios;
 
+import co.com.ceiba.dominio.comun.ProveedorTiempo;
 import co.com.ceiba.dominio.comun.ValidadorArgumentos;
 import co.com.ceiba.dominio.vehiculo.TipoVehiculo;
+import co.com.ceiba.dominio.vehiculo.Vehiculo;
 import co.com.ceiba.dominio.vehiculo.VehiculoRepositorio;
 import lombok.RequiredArgsConstructor;
 
@@ -14,6 +16,8 @@ public class RegistrarVehiculoServicio {
 
     private final ValidadorArgumentos validador;
 
+    private final ProveedorTiempo proveedorTiempo;
+
     private final VehiculoRepositorio repositorioVehiculos;
 
 
@@ -23,9 +27,9 @@ public class RegistrarVehiculoServicio {
         validador.validarObligatorio(tipoVehiculo, TIPO_OBLIGATORIO);
         validador.validarValorEnumValido(tipoVehiculo, TipoVehiculo.class, TIPO_INVALIDO);
 
-        repositorioVehiculos.registrar();
+        Vehiculo vehiculoEntrante = new Vehiculo(TipoVehiculo.valueOf(tipoVehiculo), placa, proveedorTiempo.obtenerHoraActual());
 
-        return 1L;
+        return repositorioVehiculos.registrar(vehiculoEntrante);
     }
 
 }

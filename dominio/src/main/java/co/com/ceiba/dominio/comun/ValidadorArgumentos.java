@@ -7,7 +7,6 @@ import co.com.ceiba.dominio.comun.excepcion.ExcepcionValorObligatorio;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
