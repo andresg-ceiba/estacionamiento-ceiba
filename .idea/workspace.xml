@@ -2,14 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="05d7347d-aa34-4fdb-b0bc-481490ba4782" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dominio/src/main/java/co/com/ceiba/dominio/comun/ProveedorTiempo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dominio/src/main/java/co/com/ceiba/servicios/ConsultarVehiculoServicio.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dominio/src/main/java/co/com/ceiba/dominio/comun/excepcion/ExcepcionOperacionNoPermitida.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dominio/src/test/java/co/com/ceiba/servicios/RegistrarVehiculoServicioTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dominio/src/main/java/co/com/ceiba/dominio/comun/ValidadorArgumentos.java" beforeDir="false" afterPath="$PROJECT_DIR$/dominio/src/main/java/co/com/ceiba/dominio/comun/ValidadorArgumentos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dominio/src/main/java/co/com/ceiba/dominio/vehiculo/Vehiculo.java" beforeDir="false" afterPath="$PROJECT_DIR$/dominio/src/main/java/co/com/ceiba/dominio/vehiculo/Vehiculo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dominio/src/main/java/co/com/ceiba/dominio/vehiculo/VehiculoRepositorio.java" beforeDir="false" afterPath="$PROJECT_DIR$/dominio/src/main/java/co/com/ceiba/dominio/vehiculo/VehiculoRepositorio.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dominio/src/main/java/co/com/ceiba/servicios/RegistrarVehiculoServicio.java" beforeDir="false" afterPath="$PROJECT_DIR$/dominio/src/main/java/co/com/ceiba/servicios/RegistrarVehiculoServicio.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
@@ -79,11 +74,6 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/settings.gradle">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="289">
@@ -101,11 +91,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/dominio/src/main/java/co/com/ceiba/servicios/RegistrarVehiculoServicio.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="20" column="2" selection-start-line="20" selection-start-column="2" selection-end-line="20" selection-end-column="59" />
+            <state relative-caret-position="-91">
+              <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -113,7 +103,30 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dominio/src/test/java/co/com/ceiba/servicios/RegistrarVehiculoServicioTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="15" column="5" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dominio/src/main/java/co/com/ceiba/dominio/comun/excepcion/ExcepcionOperacionNoPermitida.java">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dominio/src/main/java/co/com/ceiba/dominio/comun/excepcion/ExcepcionLongitudValor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="3" selection-start-line="3" selection-end-line="3" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dominio/src/main/java/co/com/ceiba/servicios/ConsultarVehiculoServicio.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="204">
@@ -128,10 +141,9 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dominio/src/main/java/co/com/ceiba/dominio/comun/ProveedorTiempo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="35" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
+            <state relative-caret-position="102">
+              <caret line="6" column="45" lean-forward="true" selection-start-line="6" selection-start-column="45" selection-end-line="6" selection-end-column="45" />
               <folding>
-                <element signature="e#150#151#0" expanded="true" />
                 <element signature="e#187#188#0" expanded="true" />
               </folding>
             </state>
@@ -141,20 +153,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dominio/src/main/java/co/com/ceiba/dominio/comun/ValidadorArgumentos.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
+            <state relative-caret-position="136">
               <caret line="14" column="46" lean-forward="true" selection-start-line="14" selection-start-column="46" selection-end-line="14" selection-end-column="46" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dominio/src/main/java/co/com/ceiba/dominio/vehiculo/TipoVehiculo.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -166,6 +169,7 @@
       <list>
         <option value="Interface" />
         <option value="Class" />
+        <option value="JUnit4 Test Class" />
       </list>
     </option>
   </component>
@@ -184,10 +188,12 @@
         <option value="$PROJECT_DIR$/dominio/src/main/java/co/com/ceiba/dominio/comun/excepcion/ExcepcionValorObligatorio.java" />
         <option value="$PROJECT_DIR$/dominio/src/main/java/co/com/ceiba/dominio/vehiculo/Vehiculo.java" />
         <option value="$PROJECT_DIR$/dominio/src/main/java/co/com/ceiba/dominio/comun/TiempoProveedor.java" />
-        <option value="$PROJECT_DIR$/dominio/src/main/java/co/com/ceiba/servicios/RegistrarVehiculoServicio.java" />
         <option value="$PROJECT_DIR$/dominio/src/main/java/co/com/ceiba/dominio/vehiculo/VehiculoRepositorio.java" />
         <option value="$PROJECT_DIR$/dominio/src/main/java/co/com/ceiba/servicios/ConsultarVehiculoServicio.java" />
         <option value="$PROJECT_DIR$/dominio/src/main/java/co/com/ceiba/dominio/comun/ValidadorArgumentos.java" />
+        <option value="$PROJECT_DIR$/dominio/src/main/java/co/com/ceiba/dominio/comun/excepcion/ExcepcionOperacionNoPermitida.java" />
+        <option value="$PROJECT_DIR$/dominio/src/main/java/co/com/ceiba/servicios/RegistrarVehiculoServicio.java" />
+        <option value="$PROJECT_DIR$/dominio/src/test/java/co/com/ceiba/servicios/RegistrarVehiculoServicioTest.java" />
       </list>
     </option>
   </component>
@@ -304,6 +310,20 @@
               <item name="com" type="462c0819:PsiDirectoryNode" />
               <item name="ceiba" type="462c0819:PsiDirectoryNode" />
               <item name="dominio" type="462c0819:PsiDirectoryNode" />
+              <item name="comun" type="462c0819:PsiDirectoryNode" />
+              <item name="excepcion" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hexagonal" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Hexagonal" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="dominio" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="co" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="ceiba" type="462c0819:PsiDirectoryNode" />
+              <item name="dominio" type="462c0819:PsiDirectoryNode" />
               <item name="vehiculo" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -318,6 +338,63 @@
               <item name="ceiba" type="462c0819:PsiDirectoryNode" />
               <item name="servicios" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="hexagonal" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Hexagonal" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="dominio" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="hexagonal" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Hexagonal" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="dominio" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hexagonal" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Hexagonal" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="dominio" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="co" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hexagonal" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Hexagonal" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="dominio" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="co" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hexagonal" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Hexagonal" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="dominio" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="co" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="ceiba" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hexagonal" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Hexagonal" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="dominio" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="co" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="ceiba" type="462c0819:PsiDirectoryNode" />
+              <item name="servicios" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -326,10 +403,21 @@
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../java-arquitectura-hexagonal-cqrs/microservicio/build.gradle" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="co.com.ceiba.servicios" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="co.com.ceiba.dominio.comun.excepcion" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Dev\Ceiba\Hexagonal\dominio\src\main\java\co\com\ceiba\dominio\comun" />
     </key>
@@ -417,13 +505,13 @@
       <window_info id="UI Designer" />
       <window_info id="Favorites" side_tool="true" />
       <window_info id="Capture Tool" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.3030086" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Build" weight="0.32974428" />
       <window_info anchor="bottom" id="sbt-shell-toolwindow" />
       <window_info anchor="bottom" id="Terminal" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
-      <window_info anchor="bottom" id="SonarLint" visible="true" weight="0.32974428" />
+      <window_info active="true" anchor="bottom" id="SonarLint" visible="true" weight="0.32974428" />
       <window_info anchor="bottom" id="Version Control" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
@@ -473,13 +561,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dominio/src/main/java/co/com/ceiba/dominio/comun/excepcion/ExcepcionLongitudValor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dominio/src/main/java/co/com/ceiba/dominio/comun/excepcion/ExcepcionDuplicidad.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -514,27 +595,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dominio/src/main/java/co/com/ceiba/dominio/comun/ProveedorTiempo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="35" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
-          <folding>
-            <element signature="e#150#151#0" expanded="true" />
-            <element signature="e#187#188#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dominio/src/main/java/co/com/ceiba/dominio/comun/ValidadorArgumentos.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="46" lean-forward="true" selection-start-line="14" selection-start-column="46" selection-end-line="14" selection-end-column="46" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dominio/src/main/java/co/com/ceiba/dominio/vehiculo/VehiculoRepositorio.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -542,13 +602,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dominio/src/main/java/co/com/ceiba/servicios/RegistrarVehiculoServicio.java">
+    <entry file="file://$PROJECT_DIR$/dominio/src/main/java/co/com/ceiba/dominio/comun/ProveedorTiempo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="20" column="2" selection-start-line="20" selection-start-column="2" selection-end-line="20" selection-end-column="59" />
+        <state relative-caret-position="102">
+          <caret line="6" column="45" lean-forward="true" selection-start-line="6" selection-start-column="45" selection-end-line="6" selection-end-column="45" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#187#188#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-11.0.3/lib/src.zip!/java.base/java/time/LocalDateTime.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="816" column="21" selection-start-line="816" selection-start-column="21" selection-end-line="816" selection-end-column="21" />
+          <folding>
+            <element signature="e#35418#35419#0" expanded="true" />
+            <element signature="e#35460#35461#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dominio/src/main/java/co/com/ceiba/dominio/comun/excepcion/ExcepcionLongitudValor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
         </state>
       </provider>
     </entry>
@@ -556,6 +634,36 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dominio/src/main/java/co/com/ceiba/dominio/comun/ValidadorArgumentos.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="14" column="46" lean-forward="true" selection-start-line="14" selection-start-column="46" selection-end-line="14" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dominio/src/main/java/co/com/ceiba/dominio/comun/excepcion/ExcepcionOperacionNoPermitida.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dominio/src/test/java/co/com/ceiba/servicios/RegistrarVehiculoServicioTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="15" column="5" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dominio/src/main/java/co/com/ceiba/servicios/RegistrarVehiculoServicio.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-91">
+          <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
