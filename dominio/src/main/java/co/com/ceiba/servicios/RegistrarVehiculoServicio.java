@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 public class RegistrarVehiculoServicio {
 
     private static final String PLACA_OBLIGATORIA = "La placa del vehículo es obligatoria";
-    private static final String TIPO_OBLIGATORIO = "La placa es obligatoria";
+    private static final String TIPO_OBLIGATORIO = "El tipo de vehiculo es obligatorio";
     private static final String TIPO_INVALIDO = "El tipo de vehiculo no está permitido";
     private static final String ENTRADA_NO_PERMITIDA = "Las placas iniciadas en 'A' solo pueden ingresar los días lunes y domingos";
 
@@ -26,7 +26,7 @@ public class RegistrarVehiculoServicio {
     private final VehiculoRepositorio repositorioVehiculos;
 
 
-    public Long ejecutar(String placa, String tipoVehiculo) {
+    public String ejecutar(String placa, String tipoVehiculo) {
 
         validador.validarObligatorio(placa, PLACA_OBLIGATORIA);
         validador.validarObligatorio(tipoVehiculo, TIPO_OBLIGATORIO);
@@ -36,14 +36,15 @@ public class RegistrarVehiculoServicio {
 
         validarEntradaPermitida(placa, horaEntrada);
 
-        Vehiculo vehiculoEntrante = new Vehiculo(TipoVehiculo.valueOf(tipoVehiculo), placa, horaEntrada);
+        Vehiculo vehiculoEntrante = new Vehiculo(placa, TipoVehiculo.valueOf(tipoVehiculo), horaEntrada);
 
-        return repositorioVehiculos.registrar(vehiculoEntrante);
+        return repositorioVehiculos.registrar(vehiculoEntrante).getPlaca();
     }
 
     private void validarEntradaPermitida(String placa, LocalDateTime horaEntrada) {
         if (placa.charAt(0) == 'A'
-                && !(horaEntrada.getDayOfWeek().equals(DayOfWeek.SUNDAY) || horaEntrada.getDayOfWeek().equals(DayOfWeek.MONDAY))) {
+                && !(horaEntrada.getDayOfWeek().equals(DayOfWeek.SUNDAY) || horaEntrada.getDayOfWeek()
+                .equals(DayOfWeek.MONDAY))) {
 
             throw new ExcepcionOperacionNoPermitida(ENTRADA_NO_PERMITIDA);
         }

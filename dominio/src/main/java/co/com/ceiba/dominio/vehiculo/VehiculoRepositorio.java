@@ -11,7 +11,7 @@ public interface VehiculoRepositorio {
      * @return el id generado
      */
 
-    Long registrar(Vehiculo vehiculo);
+    Vehiculo registrar(Vehiculo vehiculo);
 
     /**
      * Permite eliminar un vehiculo
