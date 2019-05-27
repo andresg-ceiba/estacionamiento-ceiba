@@ -30,7 +30,7 @@ pipeline {
         stage('Unit Tests') {
             steps {
                 echo "------------>Unit Tests<------------"
-                sh 'gradlew --b ./build.gradle test'
+                sh './gradlew --b ./build.gradle test'
             }
         }
         stage('Integration Tests') {
@@ -50,7 +50,7 @@ pipeline {
             steps {
                 echo "------------>Build<------------"
 //Construir sin tarea test que se ejecutó previamente
-                sh 'gradlew --b ./build.gradle build -x test'
+                sh './gradlew --b ./build.gradle build -x test'
             }
         }
     }
