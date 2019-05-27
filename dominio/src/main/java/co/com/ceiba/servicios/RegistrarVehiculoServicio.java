@@ -18,6 +18,8 @@ public class RegistrarVehiculoServicio {
     private static final String TIPO_OBLIGATORIO = "El tipo de vehiculo es obligatorio";
     private static final String TIPO_INVALIDO = "El tipo de vehiculo no está permitido";
     private static final String ENTRADA_NO_PERMITIDA = "Las placas iniciadas en 'A' solo pueden ingresar los días lunes y domingos";
+    private static final String CAPACIDAD_CARRO_EXCEDIDA = "No pueden ingresar mas de 20 carros";
+    private static final String CAPACIDAD_MOTO_EXCEDIDA = "No pueden ingresar mas de 10 motos";
 
     private final ValidadorArgumentos validador;
 
@@ -26,19 +28,51 @@ public class RegistrarVehiculoServicio {
     private final VehiculoRepositorio repositorioVehiculos;
 
 
-    public String ejecutar(String placa, String tipoVehiculo) {
+    public String registrarVehiculo(String placa, String tipoVehiculo, Integer cilindraje) {
 
-        validador.validarObligatorio(placa, PLACA_OBLIGATORIA);
-        validador.validarObligatorio(tipoVehiculo, TIPO_OBLIGATORIO);
-        validador.validarValorEnumValido(tipoVehiculo, TipoVehiculo.class, TIPO_INVALIDO);
+        validarArgumentosEntrada(placa, tipoVehiculo);
+
+        validarCapacidadEntrada(tipoVehiculo);
 
         LocalDateTime horaEntrada = proveedorTiempo.obtenerHoraActual();
 
         validarEntradaPermitida(placa, horaEntrada);
 
-        Vehiculo vehiculoEntrante = new Vehiculo(placa, TipoVehiculo.valueOf(tipoVehiculo), horaEntrada);
+        Vehiculo vehiculoEntrante = construirVehiculoAIngresar(placa, tipoVehiculo, horaEntrada, cilindraje);
 
         return repositorioVehiculos.registrar(vehiculoEntrante).getPlaca();
+    }
+
+
+    private void validarArgumentosEntrada(String placa, String tipoVehiculo) {
+        validador.validarObligatorio(placa, PLACA_OBLIGATORIA);
+        validador.validarObligatorio(tipoVehiculo, TIPO_OBLIGATORIO);
+        validador.validarValorEnumValido(tipoVehiculo, TipoVehiculo.class, TIPO_INVALIDO);
+    }
+
+    private void validarCapacidadEntrada(String tipoVehiculo) {
+
+        switch (TipoVehiculo.valueOf(tipoVehiculo)) {
+            case CARRO:
+                if (repositorioVehiculos.consultarCantidadCarros() >= Vehiculo.CAPACIDAD_MAXIMA_CARRO) {
+                    throw new ExcepcionOperacionNoPermitida(CAPACIDAD_CARRO_EXCEDIDA);
+                }
+                break;
+            case MOTO:
+                if (repositorioVehiculos.consultarCantidadMotos() >= Vehiculo.CAPACIDAD_MAXIMA_MOTO) {
+                    throw new ExcepcionOperacionNoPermitida(CAPACIDAD_MOTO_EXCEDIDA);
+                }
+        }
+
+    }
+
+    private Vehiculo construirVehiculoAIngresar(String placa,
+                                                String tipoVehiculo,
+                                                LocalDateTime horaEntrada,
+                                                Integer cilingraje) {
+
+        return new Vehiculo(placa, TipoVehiculo.valueOf(tipoVehiculo), horaEntrada, cilingraje);
+
     }
 
     private void validarEntradaPermitida(String placa, LocalDateTime horaEntrada) {

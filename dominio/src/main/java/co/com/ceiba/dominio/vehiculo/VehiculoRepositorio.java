@@ -24,4 +24,8 @@ public interface VehiculoRepositorio {
      * Permite consultar todos los vehiculos
      */
     List<Vehiculo> consultarTodos();
+
+    Integer consultarCantidadMotos();
+
+    Integer consultarCantidadCarros();
 }
