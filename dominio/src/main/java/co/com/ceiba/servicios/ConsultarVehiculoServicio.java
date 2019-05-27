@@ -6,10 +6,14 @@ import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 
-@RequiredArgsConstructor
+
 public class ConsultarVehiculoServicio {
 
     private final VehiculoRepositorio repositorioVehiculos;
+
+    public ConsultarVehiculoServicio(VehiculoRepositorio repositorioVehiculos) {
+        this.repositorioVehiculos = repositorioVehiculos;
+    }
 
     public List<Vehiculo> consultarTodos(){
 

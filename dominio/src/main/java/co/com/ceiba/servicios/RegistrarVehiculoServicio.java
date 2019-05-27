@@ -11,7 +11,7 @@ import lombok.RequiredArgsConstructor;
 import java.time.DayOfWeek;
 import java.time.LocalDateTime;
 
-@RequiredArgsConstructor
+
 public class RegistrarVehiculoServicio {
 
     private static final String PLACA_OBLIGATORIA = "La placa del vehículo es obligatoria";
@@ -27,6 +27,13 @@ public class RegistrarVehiculoServicio {
 
     private final VehiculoRepositorio repositorioVehiculos;
 
+    public RegistrarVehiculoServicio(ValidadorArgumentos validador,
+                                     ProveedorTiempo proveedorTiempo,
+                                     VehiculoRepositorio repositorioVehiculos) {
+        this.validador = validador;
+        this.proveedorTiempo = proveedorTiempo;
+        this.repositorioVehiculos = repositorioVehiculos;
+    }
 
     public String registrarVehiculo(String placa, String tipoVehiculo, Integer cilindraje) {
 
