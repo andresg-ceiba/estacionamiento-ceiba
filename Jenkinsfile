@@ -13,7 +13,7 @@ pipeline {
     //Una sección que define las herramientas para “autoinstalar” y poner en la PATH
     tools {
         jdk 'JDK8_Centos' //Preinstalada en la Configuración del Master
-        gradle 'Gradle5.4_Centos' //Preinstalada en la Configuración del Master
+        gradle 'Gradle4.5_Centos' //Preinstalada en la Configuración del Master
     }
     //Aquí comienzan los “items” del Pipeline
     stages {
@@ -30,7 +30,7 @@ pipeline {
         stage('Unit Tests') {
             steps {
                 echo "------------>Unit Tests<------------"
-                sh './gradlew --b ./build.gradle test'
+                sh 'gradle --b ./build.gradle test'
             }
         }
         stage('Integration Tests') {
@@ -50,7 +50,7 @@ pipeline {
             steps {
                 echo "------------>Build<------------"
 //Construir sin tarea test que se ejecutó previamente
-                sh './gradlew --b ./build.gradle build -x test'
+                sh 'gradle --b ./build.gradle build -x test'
             }
         }
     }
