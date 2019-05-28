@@ -20,7 +20,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 echo "------------>Checkout<------------"
-                checkout([$class                            : 'GitSCM', branches: [[name: '*/master']],
+                checkout([$class                            : 'GitSCM', branches: [[name: '*/Feature/registrarVehiculoDominio']],
                           doGenerateSubmoduleConfigurations : false, extensions: [], gitTool:
                                   'Git_Centos', submoduleCfg: [], userRemoteConfigs: [[credentialsId                      :
                                                                                                'GitHub_andresg_ceiba', url:
