@@ -2,6 +2,7 @@ package co.com.ceiba;
 
 import co.com.ceiba.DTO.RegistroVehiculoDTO;
 import co.com.ceiba.manejador.ManejadorRegistroVehiculo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +14,7 @@ public class ControladorVehiculos {
 
     private final ManejadorRegistroVehiculo manejadorRegistroVehiculo;
 
+    @Autowired
     public ControladorVehiculos(ManejadorRegistroVehiculo manejadorRegistroVehiculo) {
         this.manejadorRegistroVehiculo = manejadorRegistroVehiculo;
     }

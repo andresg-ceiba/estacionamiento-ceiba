@@ -15,12 +15,11 @@ plugins {
 group 'co.com.ceiba'
 version '1.0-SNAPSHOT'
 
-apply plugin: 'org.springframework.boot'
+
 
 dependencies {
 
     implementation 'org.springframework.boot:spring-boot-starter'
-    compile project('infraestructura:punto-entrada-REST')
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
@@ -30,6 +29,7 @@ allprojects {
     apply plugin: 'java'
     apply plugin: 'jacoco'
     apply plugin: 'io.spring.dependency-management'
+    apply plugin: 'org.springframework.boot'
 
     sourceCompatibility = 1.8
     targetCompatibility = 1.8

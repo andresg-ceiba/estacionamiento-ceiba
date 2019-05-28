@@ -10,6 +10,9 @@ buildscript {
 group 'co.com.ceiba'
 version '1.0-SNAPSHOT'
 
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web:${springBootVersion}")
     testImplementation("org.springframework.boot:spring-boot-starter-test:${springBootVersion}")
