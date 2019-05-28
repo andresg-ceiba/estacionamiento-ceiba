@@ -1,7 +1,7 @@
 pipeline {
     //Donde se va a ejecutar el Pipeline
     agent {
-        label 'Slave5_Centos'
+        label 'Slave_Induccion'
     }
     //Opciones específicas de Pipeline dentro del Pipeline
     options {
