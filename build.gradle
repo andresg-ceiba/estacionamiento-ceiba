@@ -1,23 +1,51 @@
-plugins {
-    id 'java'
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
 }
+
 
 group 'co.com.ceiba'
 version '1.0-SNAPSHOT'
 
-sourceCompatibility = 1.8
 
-repositories {
-    mavenCentral()
-}
 
 subprojects {
+
     apply plugin: "java"
-    
+    apply plugin: "jacoco"
+    apply plugin: 'io.spring.dependency-management'
+
+
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+
     dependencies {
-        testCompile group: 'junit', name: 'junit', version: '4.12'
+        
+        testImplementation('org.springframework.boot:spring-boot-starter-test')
+        
         compileOnly 'org.projectlombok:lombok:1.18.8'
         annotationProcessor 'org.projectlombok:lombok:1.18.8'
     }
+
+    test {
+        useJUnitPlatform()
+    }
+
+    dependencyManagement {
+        imports {
+            mavenBom "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
+        }
+    }
 }
+
+
 

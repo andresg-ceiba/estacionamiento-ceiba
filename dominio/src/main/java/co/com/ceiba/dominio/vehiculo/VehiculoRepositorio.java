@@ -4,24 +4,17 @@ import java.util.List;
 
 public interface VehiculoRepositorio {
 
-    /**
-     * Permite crear un usuario
-     *
-     * @param vehiculo
-     * @return el id generado
-     */
+    Vehiculo consultarPorPlaca(String placa);
 
-    Long registrar(Vehiculo vehiculo);
+    Vehiculo registrar(Vehiculo vehiculo);
 
-    /**
-     * Permite eliminar un vehiculo
-     *
-     * @param id
-     */
+    Boolean existe(String placa);
+
     void eliminar(Long id);
 
-    /**
-     * Permite consultar todos los vehiculos
-     */
     List<Vehiculo> consultarTodos();
+
+    Long consultarCantidadMotos();
+
+    Long consultarCantidadCarros();
 }

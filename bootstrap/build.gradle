@@ -1,0 +1,12 @@
+apply plugin: 'org.springframework.boot'
+
+dependencies {
+
+    compile project(":aplicacion")
+    compile project(":dominio")
+    compile project(":infraestructura:persistencia")
+    compile project(":infraestructura:punto-entrada-REST")
+
+    compile('org.springframework.boot:spring-boot-starter')
+
+}
