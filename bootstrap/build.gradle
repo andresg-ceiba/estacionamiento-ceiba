@@ -9,6 +9,6 @@ dependencies {
 
     compile('org.springframework.boot:spring-boot-starter')
 
-
+    testCompile('com.fasterxml.jackson.core:jackson-databind')
 
 }

@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+
+import java.nio.charset.Charset;
 import java.util.List;
 
 @RestController
@@ -33,7 +35,8 @@ public class ControladorVehiculos {
         return manejadorConsultaVehiculos.ejecutar();
     }
 
-    @PostMapping(value = "/registrar", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @PostMapping(value = "/registrar", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE,
+            produces =MediaType.APPLICATION_JSON_UTF8_VALUE )
     public String registrarVehiculo(@RequestBody RegistroVehiculoDTO registroVehiculoDTO) {
 
         return manejadorRegistroVehiculo.ejecutar(
