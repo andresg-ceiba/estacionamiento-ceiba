@@ -57,8 +57,8 @@ public class VehiculoRepositorioAdaptador implements VehiculoRepositorio {
 
 
     @Override
-    public void eliminar(Long id) {
-
+    public void eliminar(Vehiculo vehiculo) {
+        repositorio.delete(mapeoVehiculoData.aData(vehiculo));
     }
 
     @Override

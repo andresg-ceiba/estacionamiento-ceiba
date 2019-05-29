@@ -10,7 +10,7 @@ public interface VehiculoRepositorio {
 
     Boolean existe(String placa);
 
-    void eliminar(Long id);
+    void eliminar(Vehiculo vehiculo);
 
     List<Vehiculo> consultarTodos();
 
