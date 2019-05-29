@@ -1,6 +1,5 @@
 package co.com.ceiba.dominio.servicios.implementacion;
 
-import co.com.ceiba.dominio.servicios.ConsultarVehiculoServicioImpl;
 import co.com.ceiba.dominio.vehiculo.Vehiculo;
 import co.com.ceiba.dominio.vehiculo.VehiculoRepositorio;
 import co.com.ceiba.testDataBuilders.VehiculoTestBuilder;
@@ -18,7 +17,7 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
-class ConsultarVehiculoServicioImplTest {
+public class ConsultarVehiculoServicioImplTest {
 
     @Mock
     private VehiculoRepositorio repositorioVehiculos;
