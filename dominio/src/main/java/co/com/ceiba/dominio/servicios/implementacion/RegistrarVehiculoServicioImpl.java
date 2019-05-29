@@ -1,6 +1,8 @@
-package co.com.ceiba.dominio.servicios;
+package co.com.ceiba.dominio.servicios.implementacion;
 
+import co.com.ceiba.dominio.comun.excepcion.ExcepcionDuplicidad;
 import co.com.ceiba.dominio.comun.excepcion.ExcepcionOperacionNoPermitida;
+import co.com.ceiba.dominio.servicios.RegistrarVehiculoServicio;
 import co.com.ceiba.dominio.vehiculo.TipoVehiculo;
 import co.com.ceiba.dominio.vehiculo.Vehiculo;
 import co.com.ceiba.dominio.vehiculo.VehiculoRepositorio;
@@ -12,6 +14,7 @@ import java.time.LocalDateTime;
 public class RegistrarVehiculoServicioImpl implements RegistrarVehiculoServicio {
 
     private static final String ENTRADA_NO_PERMITIDA = "Las placas iniciadas en 'A' solo pueden ingresar los días lunes y domingos";
+    private static final String VEHICULO_YA_INGRESADO = "El vehiculo ya ha sido ingresado anteriormente";
     private static final String CAPACIDAD_CARRO_EXCEDIDA = "No pueden ingresar mas de 20 carros";
     private static final String CAPACIDAD_MOTO_EXCEDIDA = "No pueden ingresar mas de 10 motos";
 
@@ -23,6 +26,8 @@ public class RegistrarVehiculoServicioImpl implements RegistrarVehiculoServicio 
 
     public String registrarVehiculo(Vehiculo vehiculoEntrante) {
 
+        validarVehiculoYaIngresado(vehiculoEntrante);
+
         validarCapacidadEntrada(vehiculoEntrante.getTipo());
 
         validarEntradaPermitida(vehiculoEntrante.getPlaca(), vehiculoEntrante.getHoraIngreso());
@@ -30,6 +35,13 @@ public class RegistrarVehiculoServicioImpl implements RegistrarVehiculoServicio 
         return repositorioVehiculos.registrar(vehiculoEntrante).getPlaca();
     }
 
+
+    private void validarVehiculoYaIngresado(Vehiculo vehiculoEntrante) {
+        if (repositorioVehiculos.existe(vehiculoEntrante.getPlaca())) {
+            throw new ExcepcionDuplicidad(VEHICULO_YA_INGRESADO);
+
+        }
+    }
 
     private void validarCapacidadEntrada(TipoVehiculo tipoVehiculo) {
 

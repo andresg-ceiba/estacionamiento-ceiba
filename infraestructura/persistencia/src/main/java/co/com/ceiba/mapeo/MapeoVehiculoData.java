@@ -6,7 +6,11 @@ import co.com.ceiba.dominio.vehiculo.Vehiculo;
 
 public class MapeoVehiculoData {
 
-    FabricaVehiculo fabricaVehiculo;
+    private final FabricaVehiculo fabricaVehiculo;
+
+    public MapeoVehiculoData(FabricaVehiculo fabricaVehiculo) {
+        this.fabricaVehiculo = fabricaVehiculo;
+    }
 
     public Vehiculo aEntidad(VehiculoData vehiculoData) {
         return fabricaVehiculo.crearVehiculo(

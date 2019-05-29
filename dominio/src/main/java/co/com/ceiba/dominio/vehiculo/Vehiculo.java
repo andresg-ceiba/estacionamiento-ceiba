@@ -17,8 +17,10 @@ public class Vehiculo {
     private static final String CILINDRAJE_OBLIGATORIO = "El cilindraje es obligatorio en un vehiculo de tipo moto";
 
 
-    public static final Integer CAPACIDAD_MAXIMA_MOTO = 10;
-    public static final Integer CAPACIDAD_MAXIMA_CARRO = 20;
+    public static final Long CAPACIDAD_MAXIMA_MOTO = 10L;
+    public static final Long CAPACIDAD_MAXIMA_CARRO = 20L;
+    public static final Long HORAS_LIMITE_DIA = 9L;
+    public static final Long HORAS_POR_DIA = 24L;
 
     private final String placa;
 

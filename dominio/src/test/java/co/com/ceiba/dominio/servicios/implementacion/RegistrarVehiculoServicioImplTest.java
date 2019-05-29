@@ -1,8 +1,8 @@
 package co.com.ceiba.dominio.servicios.implementacion;
 
 
+import co.com.ceiba.dominio.comun.excepcion.ExcepcionDuplicidad;
 import co.com.ceiba.dominio.comun.excepcion.ExcepcionOperacionNoPermitida;
-import co.com.ceiba.dominio.servicios.RegistrarVehiculoServicioImpl;
 import co.com.ceiba.dominio.vehiculo.TipoVehiculo;
 import co.com.ceiba.dominio.vehiculo.Vehiculo;
 import co.com.ceiba.dominio.vehiculo.VehiculoRepositorio;
@@ -19,8 +19,8 @@ import static org.mockito.Mockito.when;
 @RunWith(MockitoJUnitRunner.class)
 public class RegistrarVehiculoServicioImplTest {
 
-    private static final Integer CANTIDAD_CARRO_PERMITIDA = 10;
-    private static final Integer CANTIDAD_MOTO_PERMITIDA = 5;
+    private static final Long CANTIDAD_CARRO_PERMITIDA = 10L;
+    private static final Long CANTIDAD_MOTO_PERMITIDA = 5L;
     private static final String PLACA_NO_PERMITIDA = "ABC123";
 
     @Mock
@@ -40,6 +40,8 @@ public class RegistrarVehiculoServicioImplTest {
 
         Vehiculo vehiculo = VehiculoTestBuilder.unVehiculo();
 
+        when(repositorioVehiculos.existe(vehiculo.getPlaca())).thenReturn(false);
+
         when(repositorioVehiculos.consultarCantidadCarros()).thenReturn(CANTIDAD_CARRO_PERMITIDA);
 
         when(repositorioVehiculos.registrar(vehiculo)).thenReturn(vehiculo);
@@ -54,8 +56,9 @@ public class RegistrarVehiculoServicioImplTest {
 
         Vehiculo moto = VehiculoTestBuilder.unVehiculo().withTipo(TipoVehiculo.MOTO);
 
-        when(repositorioVehiculos.consultarCantidadMotos()).thenReturn(CANTIDAD_MOTO_PERMITIDA);
+        when(repositorioVehiculos.existe(moto.getPlaca())).thenReturn(false);
 
+        when(repositorioVehiculos.consultarCantidadMotos()).thenReturn(CANTIDAD_MOTO_PERMITIDA);
 
         when(repositorioVehiculos.registrar(moto)).thenReturn(moto);
 
@@ -63,6 +66,20 @@ public class RegistrarVehiculoServicioImplTest {
 
     }
 
+    @Test
+    public void vehiculoYaIngresadoDebeFallarTest() {
+
+        Vehiculo vehiculo = VehiculoTestBuilder.unVehiculo();
+
+        when(repositorioVehiculos.existe(vehiculo.getPlaca())).thenReturn(true);
+
+
+        try {
+            servicio.registrarVehiculo(vehiculo);
+        } catch (ExcepcionDuplicidad ex) {
+            assertEquals("El vehiculo ya ha sido ingresado anteriormente", ex.getMessage());
+        }
+    }
 
     @Test
     public void capacidadCarroExcedidaDebeFallarTest() {

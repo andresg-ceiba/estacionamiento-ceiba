@@ -13,7 +13,7 @@ version '1.0-SNAPSHOT'
 
 
 
-allprojects {
+subprojects {
 
     apply plugin: "java"
     apply plugin: "jacoco"

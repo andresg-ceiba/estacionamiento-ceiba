@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface VehiculoDataRepositorio extends MongoRepository<VehiculoData, String> {
+
+    Long countByTipo(String tipoVehiculo);
 }
