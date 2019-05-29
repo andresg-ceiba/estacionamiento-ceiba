@@ -3,7 +3,7 @@ package co.com.ceiba.manejador;
 import co.com.ceiba.dominio.comun.ProveedorTiempo;
 import co.com.ceiba.dominio.vehiculo.FabricaVehiculo;
 import co.com.ceiba.dominio.vehiculo.Vehiculo;
-import co.com.ceiba.servicios.RegistrarVehiculoServicio;
+import co.com.ceiba.dominio.servicios.RegistrarVehiculoServicio;
 
 public class ManejadorRegistroVehiculo {
 

@@ -1,2 +1,0 @@
-include ':persistencia'
-include ':punto-entrada-REST'

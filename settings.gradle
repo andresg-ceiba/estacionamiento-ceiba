@@ -2,8 +2,7 @@ rootProject.name = 'hexagonal'
 
 include ':dominio'
 include ':aplicacion'
-include ':infraestructura:persistencia'
-include ':infraestructura:punto-entrada-REST'
-
-
+include 'infraestructura:persistencia'
+include 'infraestructura:punto-entrada-REST'
+include 'bootstrap'
 

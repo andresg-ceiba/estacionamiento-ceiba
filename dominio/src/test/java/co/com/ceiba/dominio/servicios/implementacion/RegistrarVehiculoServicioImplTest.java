@@ -1,21 +1,22 @@
-package co.com.ceiba.servicios.implementacion;
+package co.com.ceiba.dominio.servicios.implementacion;
 
 
 import co.com.ceiba.dominio.comun.excepcion.ExcepcionOperacionNoPermitida;
+import co.com.ceiba.dominio.servicios.RegistrarVehiculoServicioImpl;
 import co.com.ceiba.dominio.vehiculo.TipoVehiculo;
 import co.com.ceiba.dominio.vehiculo.Vehiculo;
 import co.com.ceiba.dominio.vehiculo.VehiculoRepositorio;
 import co.com.ceiba.testDataBuilders.VehiculoTestBuilder;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
+import org.mockito.junit.MockitoJUnitRunner;
 
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 
-@ExtendWith(MockitoExtension.class)
+@RunWith(MockitoJUnitRunner.class)
 public class RegistrarVehiculoServicioImplTest {
 
     private static final Integer CANTIDAD_CARRO_PERMITIDA = 10;
@@ -28,7 +29,7 @@ public class RegistrarVehiculoServicioImplTest {
 
     private RegistrarVehiculoServicioImpl servicio;
 
-    @BeforeEach
+    @Before
     public void setUp() {
 
         servicio = new RegistrarVehiculoServicioImpl(repositorioVehiculos);
@@ -43,7 +44,7 @@ public class RegistrarVehiculoServicioImplTest {
 
         when(repositorioVehiculos.registrar(vehiculo)).thenReturn(vehiculo);
 
-        Assertions.assertEquals(vehiculo.getPlaca(),
+        assertEquals(vehiculo.getPlaca(),
                 servicio.registrarVehiculo(vehiculo));
 
     }
@@ -58,7 +59,7 @@ public class RegistrarVehiculoServicioImplTest {
 
         when(repositorioVehiculos.registrar(moto)).thenReturn(moto);
 
-        Assertions.assertEquals(moto.getPlaca(), servicio.registrarVehiculo(moto));
+        assertEquals(moto.getPlaca(), servicio.registrarVehiculo(moto));
 
     }
 
@@ -70,9 +71,11 @@ public class RegistrarVehiculoServicioImplTest {
 
         when(repositorioVehiculos.consultarCantidadCarros()).thenReturn(Vehiculo.CAPACIDAD_MAXIMA_CARRO);
 
-        Assertions.assertThrows(ExcepcionOperacionNoPermitida.class, () -> {
+        try {
             servicio.registrarVehiculo(vehiculo);
-        }, "No pueden ingresar mas de 20 carros");
+        } catch (ExcepcionOperacionNoPermitida ex) {
+            assertEquals("No pueden ingresar mas de 20 carros", ex.getMessage());
+        }
     }
 
     @Test
@@ -82,9 +85,13 @@ public class RegistrarVehiculoServicioImplTest {
 
         when(repositorioVehiculos.consultarCantidadMotos()).thenReturn(Vehiculo.CAPACIDAD_MAXIMA_MOTO);
 
-        Assertions.assertThrows(ExcepcionOperacionNoPermitida.class, () -> {
+        try {
             servicio.registrarVehiculo(moto);
-        }, "No pueden ingresar mas de 10 motos");
+        } catch (ExcepcionOperacionNoPermitida ex) {
+            assertEquals("No pueden ingresar mas de 10 motos", ex.getMessage());
+        }
+
+
     }
 
     @Test
@@ -94,9 +101,13 @@ public class RegistrarVehiculoServicioImplTest {
 
         when(repositorioVehiculos.consultarCantidadCarros()).thenReturn(CANTIDAD_CARRO_PERMITIDA);
 
-        Assertions.assertThrows(ExcepcionOperacionNoPermitida.class, () -> {
+
+        try {
             servicio.registrarVehiculo(moto);
-        }, "Las placas iniciadas en 'A' solo pueden ingresar los días lunes y domingos");
+        } catch (ExcepcionOperacionNoPermitida ex) {
+            assertEquals("Las placas iniciadas en 'A' solo pueden ingresar los días lunes y domingos", ex.getMessage());
+        }
+
     }
 
 }

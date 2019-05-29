@@ -2,19 +2,19 @@ package co.com.ceiba.dominio.vehiculo;
 
 import co.com.ceiba.dominio.comun.excepcion.ExcepcionValorInvalido;
 import co.com.ceiba.testDataBuilders.VehiculoTestBuilder;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.Assert.assertEquals;
 
-class FabricaVehiculoTest {
+
+public class FabricaVehiculoTest {
 
     private static final String TIPO_NO_VALIDO = "TRICICLO";
 
     private FabricaVehiculo fabricaVehiculo = new FabricaVehiculo();
 
     @Test
-    void crearVehiculoCorrectamenteTest() {
+    public void crearVehiculoCorrectamenteTest() {
         Vehiculo vehiculo = VehiculoTestBuilder.unVehiculo();
 
         assertEquals(vehiculo,
@@ -26,14 +26,18 @@ class FabricaVehiculoTest {
     }
 
     @Test
-    void enumNoValidoDebeFallarTest() {
+    public void enumNoValidoDebeFallarTest() {
         Vehiculo vehiculo = VehiculoTestBuilder.unVehiculo();
 
-        assertThrows(ExcepcionValorInvalido.class, () ->
-                fabricaVehiculo.crearVehiculo(
-                        vehiculo.getPlaca(),
-                        TIPO_NO_VALIDO,
-                        vehiculo.getHoraIngreso(),
-                        vehiculo.getCilindraje()), "El tipo de vehiculo no es válido");
+        try {
+            fabricaVehiculo.crearVehiculo(
+                    vehiculo.getPlaca(),
+                    TIPO_NO_VALIDO,
+                    vehiculo.getHoraIngreso(),
+                    vehiculo.getCilindraje());
+        } catch (ExcepcionValorInvalido ex) {
+            assertEquals("El tipo de vehiculo no es válido", ex.getMessage());
+        }
+
     }
 }

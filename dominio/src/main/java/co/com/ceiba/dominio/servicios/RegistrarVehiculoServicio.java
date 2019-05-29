@@ -1,4 +1,4 @@
-package co.com.ceiba.servicios;
+package co.com.ceiba.dominio.servicios;
 
 import co.com.ceiba.dominio.vehiculo.Vehiculo;
 

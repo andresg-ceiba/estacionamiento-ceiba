@@ -2,61 +2,75 @@ package co.com.ceiba.dominio.vehiculo;
 
 import co.com.ceiba.dominio.comun.excepcion.ExcepcionValorObligatorio;
 import co.com.ceiba.testDataBuilders.VehiculoTestBuilder;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.Assert.assertEquals;
 
-class VehiculoTest {
+
+public class VehiculoTest {
 
     @Test
-    void vehiculoSinPlacaDebeFallarTest() {
+    public void vehiculoSinPlacaDebeFallarTest() {
         Vehiculo vehiculo = VehiculoTestBuilder.unVehiculo();
 
-        assertThrows(ExcepcionValorObligatorio.class,
-                () -> new Vehiculo(
-                        null,
-                        vehiculo.getTipo(),
-                        vehiculo.getHoraIngreso(),
-                        vehiculo.getCilindraje()),
-                "La placa del vehículo es obligatoria");
+        try {
+            new Vehiculo(
+                    null,
+                    vehiculo.getTipo(),
+                    vehiculo.getHoraIngreso(),
+                    vehiculo.getCilindraje());
+        } catch (ExcepcionValorObligatorio ex) {
+            assertEquals("La placa del vehículo es obligatoria", ex.getMessage());
+        }
+
     }
 
     @Test
-    void vehiculoSinTipoDebeFallarTest() {
+    public void vehiculoSinTipoDebeFallarTest() {
         Vehiculo vehiculo = VehiculoTestBuilder.unVehiculo();
 
-        assertThrows(ExcepcionValorObligatorio.class,
-                () -> new Vehiculo(
-                        vehiculo.getPlaca(),
-                        null,
-                        vehiculo.getHoraIngreso(),
-                        vehiculo.getCilindraje()),
-                "El tipo del vehículo es obligatorio");
+
+        try {
+            new Vehiculo(
+                    vehiculo.getPlaca(),
+                    null,
+                    vehiculo.getHoraIngreso(),
+                    vehiculo.getCilindraje());
+        } catch (ExcepcionValorObligatorio ex) {
+            assertEquals("El tipo del vehículo es obligatorio", ex.getMessage());
+        }
+
     }
 
     @Test
-    void vehiculoSinHoraDeIngresoDebeFallarTest() {
+    public void vehiculoSinHoraDeIngresoDebeFallarTest() {
         Vehiculo vehiculo = VehiculoTestBuilder.unVehiculo();
 
-        assertThrows(ExcepcionValorObligatorio.class,
-                () -> new Vehiculo(
-                        vehiculo.getPlaca(),
-                        vehiculo.getTipo(),
-                        null,
-                        vehiculo.getCilindraje()),
-                "La hora de ingreso del vehículo es obligatoria");
+        try {
+            new Vehiculo(
+                    vehiculo.getPlaca(),
+                    vehiculo.getTipo(),
+                    null,
+                    vehiculo.getCilindraje());
+        } catch (ExcepcionValorObligatorio ex) {
+            assertEquals("La hora de ingreso del vehículo es obligatoria", ex.getMessage());
+        }
+
     }
 
     @Test
-    void motoSinCilindrajeDebeFallarTest() {
+    public void motoSinCilindrajeDebeFallarTest() {
         Vehiculo vehiculo = VehiculoTestBuilder.unVehiculo().withTipo(TipoVehiculo.MOTO);
 
-        assertThrows(ExcepcionValorObligatorio.class,
-                () -> new Vehiculo(
-                        vehiculo.getPlaca(),
-                        vehiculo.getTipo(),
-                        vehiculo.getHoraIngreso(),
-                        null),
-                "El cilindraje es obligatorio en un vehiculo de tipo moto");
+        try {
+            new Vehiculo(
+                    vehiculo.getPlaca(),
+                    vehiculo.getTipo(),
+                    vehiculo.getHoraIngreso(),
+                    null);
+        } catch (ExcepcionValorObligatorio ex) {
+            assertEquals("El cilindraje es obligatorio en un vehiculo de tipo moto", ex.getMessage());
+        }
+
     }
 }

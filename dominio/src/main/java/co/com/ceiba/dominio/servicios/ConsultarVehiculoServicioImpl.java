@@ -1,9 +1,8 @@
-package co.com.ceiba.servicios.implementacion;
+package co.com.ceiba.dominio.servicios;
 
 import co.com.ceiba.dominio.vehiculo.Vehiculo;
 import co.com.ceiba.dominio.vehiculo.VehiculoRepositorio;
-import co.com.ceiba.servicios.ConsultarVehiculoServicio;
-import lombok.RequiredArgsConstructor;
+
 
 import java.util.List;
 

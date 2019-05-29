@@ -7,29 +7,18 @@ buildscript {
     }
 }
 
-plugins {
-    id 'org.springframework.boot' version '2.1.4.RELEASE'
-    id 'java'
-}
 
 group 'co.com.ceiba'
 version '1.0-SNAPSHOT'
 
 
 
-dependencies {
-
-    implementation 'org.springframework.boot:spring-boot-starter'
-
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-}
-
 allprojects {
 
-    apply plugin: 'java'
-    apply plugin: 'jacoco'
+    apply plugin: "java"
+    apply plugin: "jacoco"
     apply plugin: 'io.spring.dependency-management'
-    apply plugin: 'org.springframework.boot'
+
 
     sourceCompatibility = 1.8
     targetCompatibility = 1.8
@@ -40,16 +29,21 @@ allprojects {
     }
 
     dependencies {
-
-        testImplementation 'org.junit.jupiter:junit-jupiter:5.4.2'
-        testCompile "org.mockito:mockito-junit-jupiter:2.27.0"
-
+        
+        testImplementation('org.springframework.boot:spring-boot-starter-test')
+        
         compileOnly 'org.projectlombok:lombok:1.18.8'
         annotationProcessor 'org.projectlombok:lombok:1.18.8'
     }
 
     test {
         useJUnitPlatform()
+    }
+
+    dependencyManagement {
+        imports {
+            mavenBom "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
+        }
     }
 }
 

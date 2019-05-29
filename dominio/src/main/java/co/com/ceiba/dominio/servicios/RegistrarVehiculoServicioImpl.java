@@ -1,10 +1,9 @@
-package co.com.ceiba.servicios.implementacion;
+package co.com.ceiba.dominio.servicios;
 
 import co.com.ceiba.dominio.comun.excepcion.ExcepcionOperacionNoPermitida;
 import co.com.ceiba.dominio.vehiculo.TipoVehiculo;
 import co.com.ceiba.dominio.vehiculo.Vehiculo;
 import co.com.ceiba.dominio.vehiculo.VehiculoRepositorio;
-import co.com.ceiba.servicios.RegistrarVehiculoServicio;
 
 import java.time.DayOfWeek;
 import java.time.LocalDateTime;
