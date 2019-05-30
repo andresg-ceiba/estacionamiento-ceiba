@@ -14,7 +14,7 @@ public class VehiculoTestBuilder {
 
 
     public static Vehiculo unVehiculo() {
-        return new Vehiculo(PLACA_VEHICULO_TEST, TipoVehiculo.CARRO, HORA_ENTRADA_TEST, CILINDRAJE_BAJO);
+        return new Vehiculo(PLACA_VEHICULO_TEST, TipoVehiculo.CARRO, HORA_ENTRADA_TEST, CILINDRAJE_BAJO,null,null);
     }
 
 

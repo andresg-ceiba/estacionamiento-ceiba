@@ -17,7 +17,7 @@ public class ManejadorRegistroVehiculo {
         this.proveedorTiempo = proveedorTiempo;
     }
 
-    public String ejecutar(String placa, String tipoVehiculo, Integer cilindraje) {
+    public Vehiculo ejecutar(String placa, String tipoVehiculo, Integer cilindraje) {
         Vehiculo vehiculoEntrante =
                 fabricaVehiculo.crearVehiculo(
                         placa,

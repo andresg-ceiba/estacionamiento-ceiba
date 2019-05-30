@@ -4,5 +4,5 @@ import co.com.ceiba.dominio.vehiculo.Vehiculo;
 
 public interface RegistrarVehiculoServicio {
 
-    String registrarVehiculo(Vehiculo placa);
+    Vehiculo registrarVehiculo(Vehiculo placa);
 }

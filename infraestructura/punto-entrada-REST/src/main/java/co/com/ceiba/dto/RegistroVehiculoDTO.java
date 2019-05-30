@@ -1,4 +1,4 @@
-package co.com.ceiba.DTO;
+package co.com.ceiba.dto;
 
 import lombok.Data;
 

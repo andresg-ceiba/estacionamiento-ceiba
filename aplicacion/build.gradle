@@ -1,5 +1,5 @@
 dependencies {
     compile project(':dominio')
     
-    testCompile project(':dominio').sourceSets.test.output
+
 }

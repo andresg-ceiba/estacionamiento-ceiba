@@ -18,7 +18,9 @@ public class VehiculoTest {
                     null,
                     vehiculo.getTipo(),
                     vehiculo.getHoraIngreso(),
-                    vehiculo.getCilindraje());
+                    vehiculo.getCilindraje(),
+                    null,
+                    null);
         } catch (ExcepcionValorObligatorio ex) {
             assertEquals("La placa del vehículo es obligatoria", ex.getMessage());
         }
@@ -35,7 +37,9 @@ public class VehiculoTest {
                     vehiculo.getPlaca(),
                     null,
                     vehiculo.getHoraIngreso(),
-                    vehiculo.getCilindraje());
+                    vehiculo.getCilindraje(),
+                    null,
+                    null);
         } catch (ExcepcionValorObligatorio ex) {
             assertEquals("El tipo del vehículo es obligatorio", ex.getMessage());
         }
@@ -51,7 +55,9 @@ public class VehiculoTest {
                     vehiculo.getPlaca(),
                     vehiculo.getTipo(),
                     null,
-                    vehiculo.getCilindraje());
+                    vehiculo.getCilindraje(),
+                    null,
+                    null);
         } catch (ExcepcionValorObligatorio ex) {
             assertEquals("La hora de ingreso del vehículo es obligatoria", ex.getMessage());
         }
@@ -67,6 +73,8 @@ public class VehiculoTest {
                     vehiculo.getPlaca(),
                     vehiculo.getTipo(),
                     vehiculo.getHoraIngreso(),
+                    null,
+                    null,
                     null);
         } catch (ExcepcionValorObligatorio ex) {
             assertEquals("El cilindraje es obligatorio en un vehiculo de tipo moto", ex.getMessage());

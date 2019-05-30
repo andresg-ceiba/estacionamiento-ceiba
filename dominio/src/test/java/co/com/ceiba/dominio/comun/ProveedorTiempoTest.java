@@ -17,16 +17,16 @@ public class ProveedorTiempoTest {
 
     @Before
     public void setUp() throws Exception {
-        Clock reloj = Clock.fixed(Instant.parse("2019-05-26T00:00:00.00Z"),ZoneId.of("UTC"));
+        Clock reloj = Clock.fixed(Instant.parse("2019-05-26T00:00:00.00Z"), ZoneId.of("UTC"));
 
         proveedorTiempo = new ProveedorTiempo(reloj);
     }
 
     @Test
     public void obtenerHoraActual() {
-        LocalDateTime horaTest= LocalDateTime.of(2019,5,26,0,0);
+        LocalDateTime horaTest = LocalDateTime.of(2019, 5, 26, 0, 0);
 
-        assertEquals(horaTest,proveedorTiempo.obtenerHoraActual());
+        assertEquals(horaTest, proveedorTiempo.obtenerHoraActual());
 
     }
 }

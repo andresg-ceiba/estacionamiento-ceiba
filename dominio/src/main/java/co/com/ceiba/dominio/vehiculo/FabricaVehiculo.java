@@ -12,6 +12,6 @@ public class FabricaVehiculo {
 
         ValidadorArgumentos.validarValorEnumValido(tipoVehiculo, TipoVehiculo.class, TIPO_INVALIDO);
 
-        return new Vehiculo(placa, TipoVehiculo.valueOf(tipoVehiculo), horaIngreso, cilindraje);
+        return new Vehiculo(placa, TipoVehiculo.valueOf(tipoVehiculo), horaIngreso, cilindraje, null, null);
     }
 }

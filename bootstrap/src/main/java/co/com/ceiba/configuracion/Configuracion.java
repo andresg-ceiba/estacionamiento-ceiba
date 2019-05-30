@@ -14,6 +14,7 @@ import co.com.ceiba.manejador.ManejadorConsultaVehiculos;
 import co.com.ceiba.manejador.ManejadorRegistroVehiculo;
 import co.com.ceiba.manejador.ManejadorSalidaVehiculo;
 import co.com.ceiba.mapeo.MapeoVehiculoData;
+import co.com.ceiba.mapeo.MapeoVehiculoDto;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -36,6 +37,11 @@ public class Configuracion {
     @Bean
     public MapeoVehiculoData crearMapeoVehiculoData(FabricaVehiculo fabricaVehiculo) {
         return new MapeoVehiculoData(fabricaVehiculo);
+    }
+
+    @Bean
+    public MapeoVehiculoDto crearMapeoVehiculoDto() {
+        return new MapeoVehiculoDto();
     }
 
     @Bean
