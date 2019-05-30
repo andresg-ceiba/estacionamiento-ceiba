@@ -52,7 +52,7 @@ public class TestIntegracion {
 
         for (int i = 0; i < 9; i++) {
             VehiculoData carro = VehiculoData.builder()
-                    .placa(PLACA_TEST + String.format("")i)
+                    .placa(PLACA_TEST +  String.format("%02d", i))
                     .tipo(TipoVehiculo.CARRO.name())
                     .horaIngreso(horaDeingreso)
                     .cilindraje(0)
@@ -111,14 +111,16 @@ public class TestIntegracion {
 
         LocalDateTime horaDeingreso = LocalDateTime.of(2019, 5, 28, 0, 0);
 
-        VehiculoData carro = VehiculoData.builder()
-                .placa(PLACA_TEST + 9)
-                .tipo(TipoVehiculo.CARRO.name())
-                .horaIngreso(horaDeingreso)
-                .cilindraje(0)
-                .build();
+        for (int i = 0; i < 9; i++) {
+            VehiculoData carro = VehiculoData.builder()
+                    .placa(PLACA_TEST +  String.format("%02d", i))
+                    .tipo(TipoVehiculo.CARRO.name())
+                    .horaIngreso(horaDeingreso)
+                    .cilindraje(0)
+                    .build();
 
-        operations.save(carro);
+            operations.save(carro);
+        }
 
         RegistroVehiculoDTO registroVehiculoDTO = new RegistroVehiculoDTO();
         registroVehiculoDTO.setPlaca("TST461");
