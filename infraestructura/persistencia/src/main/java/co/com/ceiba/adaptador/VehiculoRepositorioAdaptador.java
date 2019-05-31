@@ -1,7 +1,6 @@
 package co.com.ceiba.adaptador;
 
 import co.com.ceiba.data.VehiculoData;
-import co.com.ceiba.dominio.comun.excepcion.ExcepcionSinDatos;
 import co.com.ceiba.dominio.vehiculo.TipoVehiculo;
 import co.com.ceiba.dominio.vehiculo.Vehiculo;
 import co.com.ceiba.dominio.vehiculo.VehiculoRepositorio;
@@ -14,7 +13,6 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Repository

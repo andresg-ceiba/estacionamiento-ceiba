@@ -1,8 +1,8 @@
 package co.com.ceiba.integracion;
 
-import co.com.ceiba.dto.VehiculoDTO;
 import co.com.ceiba.data.VehiculoData;
 import co.com.ceiba.dominio.vehiculo.TipoVehiculo;
+import co.com.ceiba.dto.VehiculoDTO;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.junit.After;

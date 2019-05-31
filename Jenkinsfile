@@ -36,6 +36,7 @@ pipeline {
         stage('Integration Tests') {
             steps {
                 echo "------------>Integration Tests<------------"
+                sh 'gradle --b ./build.gradle integrationTest'
             }
         }
         stage('Static Code Analysis') {

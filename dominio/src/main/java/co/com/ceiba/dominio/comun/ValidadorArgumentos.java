@@ -5,10 +5,7 @@ import co.com.ceiba.dominio.comun.excepcion.ExcepcionValorObligatorio;
 
 import java.util.Arrays;
 
-public class ValidadorArgumentos {
-
-    private ValidadorArgumentos() {
-    }
+public final class ValidadorArgumentos {
 
     public static void validarObligatorio(Object valor, String mensaje) {
         if (valor == null) {

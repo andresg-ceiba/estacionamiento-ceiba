@@ -12,7 +12,6 @@ group 'co.com.ceiba'
 version '1.0-SNAPSHOT'
 
 
-
 subprojects {
 
     apply plugin: "java"
@@ -23,15 +22,21 @@ subprojects {
     sourceCompatibility = 1.8
     targetCompatibility = 1.8
 
+    configurations {
+        integrationTestImplementation.extendsFrom testImplementation
+        integrationTestCompile.extendsFrom testCompile
+    }
+    
     repositories {
         mavenCentral()
         jcenter()
     }
 
     dependencies {
-        
+
         testImplementation('org.springframework.boot:spring-boot-starter-test')
-        
+        integrationTestImplementation('org.springframework.boot:spring-boot-starter-test')
+
         compileOnly 'org.projectlombok:lombok:1.18.8'
         annotationProcessor 'org.projectlombok:lombok:1.18.8'
     }
@@ -42,7 +47,28 @@ subprojects {
             mavenBom "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
         }
     }
-    
+
+
+    sourceSets {
+        integrationTest {
+            java {
+                compileClasspath += main.output + test.output
+                runtimeClasspath += main.output + test.output
+                srcDir 'integrationTest/java'
+            }
+        }
+    }
+
+    task('integrationTest', type: Test) {
+        jacoco {
+            append = true
+            destinationFile = file("$buildDir/jacoco/test.exec")
+        }
+        testClassesDirs = sourceSets.integrationTest.output.classesDirs
+        classpath = sourceSets.integrationTest.runtimeClasspath
+    }
+
+
 }
 
 
