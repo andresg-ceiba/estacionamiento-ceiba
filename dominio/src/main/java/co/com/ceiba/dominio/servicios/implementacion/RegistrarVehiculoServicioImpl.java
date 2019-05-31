@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 
 public class RegistrarVehiculoServicioImpl implements RegistrarVehiculoServicio {
 
-    private static final String ENTRADA_NO_PERMITIDA = "Las placas iniciadas en 'A' solo pueden ingresar los días lunes y domingos";
+    private static final String ENTRADA_NO_PERMITIDA = "Las placas iniciadas en 'A' solo pueden ingresar los dias lunes y domingos";
     private static final String VEHICULO_YA_INGRESADO = "El vehiculo ya ha sido ingresado anteriormente";
     private static final String CAPACIDAD_CARRO_EXCEDIDA = "No pueden ingresar mas de 20 carros";
     private static final String CAPACIDAD_MOTO_EXCEDIDA = "No pueden ingresar mas de 10 motos";
@@ -24,7 +24,7 @@ public class RegistrarVehiculoServicioImpl implements RegistrarVehiculoServicio 
         this.repositorioVehiculos = repositorioVehiculos;
     }
 
-    public String registrarVehiculo(Vehiculo vehiculoEntrante) {
+    public Vehiculo registrarVehiculo(Vehiculo vehiculoEntrante) {
 
         validarVehiculoYaIngresado(vehiculoEntrante);
 
@@ -32,7 +32,7 @@ public class RegistrarVehiculoServicioImpl implements RegistrarVehiculoServicio 
 
         validarEntradaPermitida(vehiculoEntrante.getPlaca(), vehiculoEntrante.getHoraIngreso());
 
-        return repositorioVehiculos.registrar(vehiculoEntrante).getPlaca();
+        return repositorioVehiculos.registrar(vehiculoEntrante);
     }
 
 
@@ -47,12 +47,12 @@ public class RegistrarVehiculoServicioImpl implements RegistrarVehiculoServicio 
 
         switch (tipoVehiculo) {
             case CARRO:
-                if (repositorioVehiculos.consultarCantidadCarros() >= Vehiculo.CAPACIDAD_MAXIMA_CARRO) {
+                if (repositorioVehiculos.consultarCantidadCarros() >= tipoVehiculo.getCapacidadMaxima()) {
                     throw new ExcepcionOperacionNoPermitida(CAPACIDAD_CARRO_EXCEDIDA);
                 }
                 break;
             case MOTO:
-                if (repositorioVehiculos.consultarCantidadMotos() >= Vehiculo.CAPACIDAD_MAXIMA_MOTO) {
+                if (repositorioVehiculos.consultarCantidadMotos() >= tipoVehiculo.getCapacidadMaxima()) {
                     throw new ExcepcionOperacionNoPermitida(CAPACIDAD_MOTO_EXCEDIDA);
                 }
         }

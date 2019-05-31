@@ -16,9 +16,6 @@ public class Vehiculo {
     private static final String HORA_INGRESO_OBLIGATORIA = "La hora de ingreso del vehículo es obligatoria";
     private static final String CILINDRAJE_OBLIGATORIO = "El cilindraje es obligatorio en un vehiculo de tipo moto";
 
-
-    public static final Long CAPACIDAD_MAXIMA_MOTO = 10L;
-    public static final Long CAPACIDAD_MAXIMA_CARRO = 20L;
     public static final Long HORAS_LIMITE_DIA = 9L;
     public static final Long HORAS_POR_DIA = 24L;
 
@@ -30,14 +27,17 @@ public class Vehiculo {
 
     private final Integer cilindraje;
 
-    public Vehiculo(String placa, TipoVehiculo tipo, LocalDateTime horaIngreso, Integer cilindraje) {
+    private final LocalDateTime horaSalida;
 
-        validarArgumentosObligatorios(placa, tipo, horaIngreso, cilindraje);
+    private final Double costoEstacionamiento;
 
+    public Vehiculo(String placa, TipoVehiculo tipo, LocalDateTime horaIngreso, Integer cilindraje, LocalDateTime horaSalida, Double costoEstacionamiento) {
         this.placa = placa;
         this.tipo = tipo;
         this.horaIngreso = horaIngreso;
         this.cilindraje = cilindraje;
+        this.horaSalida = horaSalida;
+        this.costoEstacionamiento = costoEstacionamiento;
     }
 
     private void validarArgumentosObligatorios(String placa, TipoVehiculo tipoVehiculo, LocalDateTime horaIngreso, Integer cilindraje) {

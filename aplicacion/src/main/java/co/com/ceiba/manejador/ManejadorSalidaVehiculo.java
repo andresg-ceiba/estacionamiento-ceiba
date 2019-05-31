@@ -1,6 +1,7 @@
 package co.com.ceiba.manejador;
 
 import co.com.ceiba.dominio.servicios.SalidaVehiculoServicio;
+import co.com.ceiba.dominio.vehiculo.Vehiculo;
 
 public class ManejadorSalidaVehiculo {
 
@@ -10,7 +11,7 @@ public class ManejadorSalidaVehiculo {
         this.salidaVehiculoServicio = salidaVehiculoServicio;
     }
 
-    public Double ejecutar(String placa) {
+    public Vehiculo ejecutar(String placa) {
         return salidaVehiculoServicio.salidaVehiculo(placa);
     }
 }

@@ -1,50 +1,61 @@
 package co.com.ceiba;
 
-import co.com.ceiba.DTO.RegistroVehiculoDTO;
-import co.com.ceiba.dominio.vehiculo.Vehiculo;
+import co.com.ceiba.dto.RegistroVehiculoDTO;
+import co.com.ceiba.dto.VehiculoDTO;
 import co.com.ceiba.manejador.ManejadorConsultaVehiculos;
 import co.com.ceiba.manejador.ManejadorRegistroVehiculo;
 import co.com.ceiba.manejador.ManejadorSalidaVehiculo;
+import co.com.ceiba.mapeo.MapeoVehiculoDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(value = "/vehiculos")
 public class ControladorVehiculos {
 
+    private final MapeoVehiculoDto mapeoVehiculoDto;
     private final ManejadorRegistroVehiculo manejadorRegistroVehiculo;
     private final ManejadorConsultaVehiculos manejadorConsultaVehiculos;
     private final ManejadorSalidaVehiculo manejadorSalidaVehiculo;
 
     @Autowired
-    public ControladorVehiculos(ManejadorRegistroVehiculo manejadorRegistroVehiculo,
+    public ControladorVehiculos(MapeoVehiculoDto mapeoVehiculoDto,
+                                ManejadorRegistroVehiculo manejadorRegistroVehiculo,
                                 ManejadorConsultaVehiculos manejadorConsultaVehiculos,
                                 ManejadorSalidaVehiculo manejadorSalidaVehiculo) {
+        this.mapeoVehiculoDto = mapeoVehiculoDto;
         this.manejadorRegistroVehiculo = manejadorRegistroVehiculo;
         this.manejadorConsultaVehiculos = manejadorConsultaVehiculos;
         this.manejadorSalidaVehiculo = manejadorSalidaVehiculo;
     }
 
-    @GetMapping(produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public List<Vehiculo> consultarTodosLosVehiculos() {
-        return manejadorConsultaVehiculos.ejecutar();
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<VehiculoDTO> consultarTodosLosVehiculos() {
+
+
+        return manejadorConsultaVehiculos.ejecutar().stream()
+                .map(mapeoVehiculoDto::aDto)
+                .collect(Collectors.toList());
     }
 
-    @PostMapping(value = "/registrar", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public String registrarVehiculo(@RequestBody RegistroVehiculoDTO registroVehiculoDTO) {
+    @PostMapping(value = "/registrar", consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public VehiculoDTO registrarVehiculo(@RequestBody RegistroVehiculoDTO registroVehiculoDTO) {
 
-        return manejadorRegistroVehiculo.ejecutar(
-                registroVehiculoDTO.getPlaca(),
-                registroVehiculoDTO.getTipoVehiculo(),
-                registroVehiculoDTO.getCilindraje());
+        return mapeoVehiculoDto.aDto(
+                manejadorRegistroVehiculo.ejecutar(
+                        registroVehiculoDTO.getPlaca(),
+                        registroVehiculoDTO.getTipoVehiculo(),
+                        registroVehiculoDTO.getCilindraje()));
     }
 
-    @PostMapping(value = "/{placa}/salir",produces = MediaType.TEXT_PLAIN_VALUE)
-    public Double salidaVehiculo(@PathVariable(name = "placa") String placa) {
+    @PostMapping(value = "/{placa}/salir", produces = MediaType.APPLICATION_JSON_VALUE)
+    public VehiculoDTO salidaVehiculo(@PathVariable(name = "placa") String placa) {
 
-        return manejadorSalidaVehiculo.ejecutar(placa);
+        return mapeoVehiculoDto.aDto(manejadorSalidaVehiculo.ejecutar(placa));
     }
 }

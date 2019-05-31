@@ -1,7 +1,7 @@
 package co.com.ceiba.dominio.servicios.implementacion;
 
 import co.com.ceiba.dominio.comun.ProveedorTiempo;
-import co.com.ceiba.dominio.comun.excepcion.ExcepcionOperacionNoPermitida;
+import co.com.ceiba.dominio.comun.excepcion.ExcepcionSinDatos;
 import co.com.ceiba.dominio.servicios.SalidaVehiculoServicio;
 import co.com.ceiba.dominio.vehiculo.TipoVehiculo;
 import co.com.ceiba.dominio.vehiculo.Vehiculo;
@@ -24,7 +24,7 @@ public class SalidaVehiculoServicioImpl implements SalidaVehiculoServicio {
     }
 
     @Override
-    public Double salidaVehiculo(String placa) {
+    public Vehiculo salidaVehiculo(String placa) {
 
         validarVehiculoRegistrado(placa);
 
@@ -33,18 +33,20 @@ public class SalidaVehiculoServicioImpl implements SalidaVehiculoServicio {
 
         vehiculoRepositorio.eliminar(vehiculoSaliente);
 
-        return calcularCosto(vehiculoSaliente);
+        LocalDateTime horaDeSalida = proveedorTiempo.obtenerHoraActual();
+
+        return vehiculoSaliente
+                .withHoraSalida(horaDeSalida)
+                .withCostoEstacionamiento(calcularCosto(vehiculoSaliente, horaDeSalida));
     }
 
     private void validarVehiculoRegistrado(String placa) {
         if (!vehiculoRepositorio.existe(placa)) {
-            throw new ExcepcionOperacionNoPermitida(ELIMINAR_VEHICULO_EXISTENTE_IMPOSIBLE);
+            throw new ExcepcionSinDatos(ELIMINAR_VEHICULO_EXISTENTE_IMPOSIBLE);
         }
     }
 
-    private Double calcularCosto(Vehiculo vehiculoSaliente) {
-
-        LocalDateTime horaDeSalida = proveedorTiempo.obtenerHoraActual();
+    private Double calcularCosto(Vehiculo vehiculoSaliente, LocalDateTime horaDeSalida) {
 
         Long minutosFaltantes = vehiculoSaliente.getHoraIngreso().until(horaDeSalida, ChronoUnit.MINUTES);
 

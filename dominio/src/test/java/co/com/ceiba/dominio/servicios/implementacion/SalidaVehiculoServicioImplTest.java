@@ -37,9 +37,11 @@ public class SalidaVehiculoServicioImplTest {
     @Test
     public void salidaCarroAntesNueveHorasTest() {
 
-        Vehiculo vehiculo = VehiculoTestBuilder.unVehiculo();
-
         LocalDateTime horaSalida = LocalDateTime.of(2019, 05, 15, 4, 0);
+
+        Vehiculo vehiculo = VehiculoTestBuilder.unVehiculo()
+                .withHoraSalida(horaSalida)
+                .withCostoEstacionamiento(4000d);
 
         when(vehiculoRepositorio.existe(vehiculo.getPlaca())).thenReturn(true);
 
@@ -47,15 +49,17 @@ public class SalidaVehiculoServicioImplTest {
 
         when(proveedorTiempo.obtenerHoraActual()).thenReturn(horaSalida);
 
-        assertEquals(Double.valueOf(4000d), salidaVehiculoServicio.salidaVehiculo(vehiculo.getPlaca()));
+        assertEquals(vehiculo, salidaVehiculoServicio.salidaVehiculo(vehiculo.getPlaca()));
     }
 
     @Test
     public void salidaCarroDespuesNueveHorasTest() {
 
-        Vehiculo vehiculo = VehiculoTestBuilder.unVehiculo();
-
         LocalDateTime horaSalida = LocalDateTime.of(2019, 05, 16, 3, 0);
+
+        Vehiculo vehiculo = VehiculoTestBuilder.unVehiculo()
+                .withHoraSalida(horaSalida)
+                .withCostoEstacionamiento(11000d);
 
         when(vehiculoRepositorio.existe(vehiculo.getPlaca())).thenReturn(true);
 
@@ -63,15 +67,19 @@ public class SalidaVehiculoServicioImplTest {
 
         when(proveedorTiempo.obtenerHoraActual()).thenReturn(horaSalida);
 
-        assertEquals(Double.valueOf(11000d), salidaVehiculoServicio.salidaVehiculo(vehiculo.getPlaca()));
+        assertEquals(vehiculo, salidaVehiculoServicio.salidaVehiculo(vehiculo.getPlaca()));
     }
 
     @Test
     public void salidaMotoAntesNueveHorasTest() {
 
-        Vehiculo vehiculo = VehiculoTestBuilder.unVehiculo().withTipo(TipoVehiculo.MOTO);
 
         LocalDateTime horaSalida = LocalDateTime.of(2019, 05, 15, 4, 0);
+
+        Vehiculo vehiculo = VehiculoTestBuilder.unVehiculo()
+                .withTipo(TipoVehiculo.MOTO)
+                .withHoraSalida(horaSalida)
+                .withCostoEstacionamiento(2000d);
 
         when(vehiculoRepositorio.existe(vehiculo.getPlaca())).thenReturn(true);
 
@@ -79,15 +87,18 @@ public class SalidaVehiculoServicioImplTest {
 
         when(proveedorTiempo.obtenerHoraActual()).thenReturn(horaSalida);
 
-        assertEquals(Double.valueOf(2000d), salidaVehiculoServicio.salidaVehiculo(vehiculo.getPlaca()));
+        assertEquals(vehiculo, salidaVehiculoServicio.salidaVehiculo(vehiculo.getPlaca()));
     }
 
     @Test
     public void salidaMotoDespuesNueveHorasTest() {
 
-        Vehiculo vehiculo = VehiculoTestBuilder.unVehiculo().withTipo(TipoVehiculo.MOTO);
-
         LocalDateTime horaSalida = LocalDateTime.of(2019, 05, 16, 3, 0);
+
+        Vehiculo vehiculo = VehiculoTestBuilder.unVehiculo()
+                .withTipo(TipoVehiculo.MOTO)
+                .withHoraSalida(horaSalida)
+                .withCostoEstacionamiento(5500d);
 
         when(vehiculoRepositorio.existe(vehiculo.getPlaca())).thenReturn(true);
 
@@ -95,17 +106,19 @@ public class SalidaVehiculoServicioImplTest {
 
         when(proveedorTiempo.obtenerHoraActual()).thenReturn(horaSalida);
 
-        assertEquals(Double.valueOf(5500d), salidaVehiculoServicio.salidaVehiculo(vehiculo.getPlaca()));
+        assertEquals(vehiculo, salidaVehiculoServicio.salidaVehiculo(vehiculo.getPlaca()));
     }
 
     @Test
     public void salidaMotoAltoCilindrajeTest() {
 
+        LocalDateTime horaSalida = LocalDateTime.of(2019, 05, 16, 3, 0);
+
         Vehiculo vehiculo = VehiculoTestBuilder.unVehiculo()
                 .withTipo(TipoVehiculo.MOTO)
-                .withCilindraje(TipoVehiculo.MOTO.getUmbralAltoCilindraje() + 1);
-
-        LocalDateTime horaSalida = LocalDateTime.of(2019, 05, 16, 3, 0);
+                .withCilindraje(TipoVehiculo.MOTO.getUmbralAltoCilindraje() + 1)
+                .withHoraSalida(horaSalida)
+                .withCostoEstacionamiento(7500d);
 
         when(vehiculoRepositorio.existe(vehiculo.getPlaca())).thenReturn(true);
 
@@ -113,6 +126,6 @@ public class SalidaVehiculoServicioImplTest {
 
         when(proveedorTiempo.obtenerHoraActual()).thenReturn(horaSalida);
 
-        assertEquals(Double.valueOf(7500d), salidaVehiculoServicio.salidaVehiculo(vehiculo.getPlaca()));
+        assertEquals(vehiculo, salidaVehiculoServicio.salidaVehiculo(vehiculo.getPlaca()));
     }
 }

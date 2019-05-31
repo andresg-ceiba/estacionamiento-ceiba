@@ -36,13 +36,16 @@ subprojects {
         annotationProcessor 'org.projectlombok:lombok:1.18.8'
     }
 
-    test {
-        useJUnitPlatform()
-    }
 
     dependencyManagement {
         imports {
             mavenBom "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
+        }
+    }
+
+    jacocoTestReport {
+        reports {
+            xml.enabled true
         }
     }
 }

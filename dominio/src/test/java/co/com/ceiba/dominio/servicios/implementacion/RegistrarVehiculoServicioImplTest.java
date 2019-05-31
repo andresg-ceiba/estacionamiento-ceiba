@@ -46,7 +46,7 @@ public class RegistrarVehiculoServicioImplTest {
 
         when(repositorioVehiculos.registrar(vehiculo)).thenReturn(vehiculo);
 
-        assertEquals(vehiculo.getPlaca(),
+        assertEquals(vehiculo,
                 servicio.registrarVehiculo(vehiculo));
 
     }
@@ -62,7 +62,7 @@ public class RegistrarVehiculoServicioImplTest {
 
         when(repositorioVehiculos.registrar(moto)).thenReturn(moto);
 
-        assertEquals(moto.getPlaca(), servicio.registrarVehiculo(moto));
+        assertEquals(moto, servicio.registrarVehiculo(moto));
 
     }
 
@@ -86,7 +86,7 @@ public class RegistrarVehiculoServicioImplTest {
 
         Vehiculo vehiculo = VehiculoTestBuilder.unVehiculo();
 
-        when(repositorioVehiculos.consultarCantidadCarros()).thenReturn(Vehiculo.CAPACIDAD_MAXIMA_CARRO);
+        when(repositorioVehiculos.consultarCantidadCarros()).thenReturn(vehiculo.getTipo().getCapacidadMaxima());
 
         try {
             servicio.registrarVehiculo(vehiculo);
@@ -100,7 +100,7 @@ public class RegistrarVehiculoServicioImplTest {
 
         Vehiculo moto = VehiculoTestBuilder.unVehiculo().withTipo(TipoVehiculo.MOTO);
 
-        when(repositorioVehiculos.consultarCantidadMotos()).thenReturn(Vehiculo.CAPACIDAD_MAXIMA_MOTO);
+        when(repositorioVehiculos.consultarCantidadMotos()).thenReturn(moto.getTipo().getCapacidadMaxima());
 
         try {
             servicio.registrarVehiculo(moto);
@@ -122,7 +122,7 @@ public class RegistrarVehiculoServicioImplTest {
         try {
             servicio.registrarVehiculo(moto);
         } catch (ExcepcionOperacionNoPermitida ex) {
-            assertEquals("Las placas iniciadas en 'A' solo pueden ingresar los días lunes y domingos", ex.getMessage());
+            assertEquals("Las placas iniciadas en 'A' solo pueden ingresar los dias lunes y domingos", ex.getMessage());
         }
 
     }
