@@ -26,7 +26,7 @@ subprojects {
         integrationTestImplementation.extendsFrom testImplementation
         integrationTestCompile.extendsFrom testCompile
     }
-    
+
     repositories {
         mavenCentral()
         jcenter()
@@ -54,16 +54,26 @@ subprojects {
             java {
                 compileClasspath += main.output + test.output
                 runtimeClasspath += main.output + test.output
-                srcDir 'integrationTest/java'
+                srcDir 'integrationTest'
             }
         }
     }
-    
-    
+
+
+    jacocoTestReport {
+        reports {
+            xml.enabled true
+            csv.enabled true
+        }
+        executionData = files("$buildDir/jacoco/test.exec")
+
+    }
+
     task('integrationTest', type: Test) {
         jacoco {
             append = true
-            destinationFile = file("$buildDir/jacoco/integrationTest.exec")
+            destinationFile = file("$buildDir/jacoco/test.exec")
+            classDumpDir = file("$buildDir/classes/integrationTest")
         }
         testClassesDirs = sourceSets.integrationTest.output.classesDirs
         classpath = sourceSets.integrationTest.runtimeClasspath
