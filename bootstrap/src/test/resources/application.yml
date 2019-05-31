@@ -1,4 +1,5 @@
 spring:
   data:
     mongodb:
-      database: EstacionamientoIntegracion
+      database: Integracion
+
