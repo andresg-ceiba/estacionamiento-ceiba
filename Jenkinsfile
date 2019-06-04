@@ -30,7 +30,7 @@ pipeline {
         stage('Unit Tests') {
             steps {
                 echo "------------>Unit Tests<------------"
-                sh 'gradle --b ./build.gradle test'
+                sh 'gradle --b ./build.gradle clean build'
             }
         }
         stage('Integration Tests') {
@@ -42,7 +42,7 @@ pipeline {
         stage('Static Code Analysis') {
             steps {
                 echo '------------>Análisis de código estático<------------'
-                 sh 'gradle --b ./build.gradle jacocoTestReport mergedReport'
+                 sh 'gradle --b ./build.gradle mergedReport'
 
                  sh 'gradle --b ./build.gradle sonarqube'
 
