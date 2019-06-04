@@ -15,6 +15,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(value = "/vehiculos")
+@CrossOrigin
 public class ControladorVehiculos {
 
     private final MapeoVehiculoDto mapeoVehiculoDto;
