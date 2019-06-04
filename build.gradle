@@ -66,10 +66,16 @@ allprojects {
         classpath = sourceSets.integrationTest.runtimeClasspath
     }
 
+    jacocoTestReport {
+        reports {
+            xml.enabled = true
+        }
+    }
+
 }
 
 task('jacocoMerge', type: JacocoMerge) {
-    executionData = project.fileTree(dir: '.', include:'**/build/jacoco/test.exec')
+    executionData = project.fileTree(dir: '.', include: '**/build/jacoco/test.exec')
 }
 
 

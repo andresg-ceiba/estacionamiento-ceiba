@@ -42,7 +42,7 @@ pipeline {
         stage('Static Code Analysis') {
             steps {
                 echo '------------>Análisis de código estático<------------'
-                 sh 'gradle --b ./build.gradle mergedReport'
+                 sh 'gradle --b ./build.gradle jacocoTestReport mergedReport'
 
                 withSonarQubeEnv('Sonar') {
                     sh "${tool name: 'SonarScanner', type: 'hudson.plugins.sonar.SonarRunnerInstallation'}/bin/sonar-scanner"
