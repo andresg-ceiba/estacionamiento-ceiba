@@ -13,7 +13,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 public class ControlExcepciones extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(value = {ExcepcionDuplicidad.class})
-    protected ResponseEntity<Object> handleConflict(RuntimeException ex, WebRequest request) {
+    protected ResponseEntity<Object> handleConflict(ExcepcionDuplicidad ex, WebRequest request) {
 
         return handleExceptionInternal(ex, ex.getMessage(),
                 new HttpHeaders(), HttpStatus.CONFLICT, request);
@@ -22,17 +22,24 @@ public class ControlExcepciones extends ResponseEntityExceptionHandler {
     @ExceptionHandler(value = {ExcepcionOperacionNoPermitida.class,
             ExcepcionValorInvalido.class,
             ExcepcionValorObligatorio.class})
-    protected ResponseEntity<Object> handleBadRequest(RuntimeException ex, WebRequest request) {
+    protected ResponseEntity<Object> handleBadRequest(ExcepcionOperacionNoPermitida ex, WebRequest request) {
 
         return handleExceptionInternal(ex, ex.getMessage(),
                 new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
     }
 
     @ExceptionHandler(value = {ExcepcionSinDatos.class})
-    protected ResponseEntity<Object> handleNotFound(RuntimeException ex, WebRequest request) {
+    protected ResponseEntity<Object> handleNotFound(ExcepcionSinDatos ex, WebRequest request) {
 
         return handleExceptionInternal(ex, ex.getMessage(),
                 new HttpHeaders(), HttpStatus.NOT_FOUND, request);
+    }
+
+    @ExceptionHandler(value = {Exception.class})
+    protected ResponseEntity<Object> handleNotFound(Exception ex, WebRequest request) {
+
+        return handleExceptionInternal(ex, ex.getMessage(),
+                new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR, request);
     }
 }
 

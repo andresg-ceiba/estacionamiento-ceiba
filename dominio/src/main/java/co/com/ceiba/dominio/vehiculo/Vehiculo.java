@@ -32,7 +32,10 @@ public class Vehiculo {
     private final Double costoEstacionamiento;
 
     public Vehiculo(String placa, TipoVehiculo tipo, LocalDateTime horaIngreso, Integer cilindraje, LocalDateTime horaSalida, Double costoEstacionamiento) {
-        this.placa = placa;
+
+        validarArgumentosObligatorios(placa, tipo, horaIngreso, cilindraje);
+
+        this.placa = placa.toUpperCase();
         this.tipo = tipo;
         this.horaIngreso = horaIngreso;
         this.cilindraje = cilindraje;
