@@ -7,7 +7,6 @@ buildscript {
     }
 }
 
-
 group 'co.com.ceiba'
 version '1.0-SNAPSHOT'
 
@@ -15,6 +14,7 @@ allprojects {
 
     apply plugin: "java"
     apply plugin: "jacoco"
+    apply plugin: "org.sonarqube:2.7.1"
     apply plugin: 'io.spring.dependency-management'
 
 
@@ -67,35 +67,25 @@ allprojects {
         classpath = sourceSets.integrationTest.runtimeClasspath
     }
 
+}
 
+task('jacocoMerge', type: JacocoMerge) {
+    executionData test, integrationTest
 }
 
 
-task('jacocoMergeTest', type: JacocoMerge) {
-    print(project.fileTree(dir: '.', include: '**/build/jacoco/test.exec'))
-    destinationFile = file("$buildDir/jacoco/test.exec")
-    executionData = project.fileTree(dir: '.', include: '**/build/jacoco/test.exec').from()
-}
-
-//task('jacocoMerge', type: JacocoMerge) {
-//    executionData test
-//}
-
-//task('mergedReport', type: JacocoReport) {
-//    executionData jacocoMerge.destinationFile
-//    dependsOn jacocoMerge
-//    sourceDirectories.from(sourceSets.main.java.sourceDirectories)
-//    sourceDirectories.from(sourceSets.otherMain.java.sourceDirectories)
-//    classDirectories.from(sourceSets.main.output)
-//    classDirectories.from(sourceSets.otherMain.output)
-//}
-
-
-jacocoTestReport {
+task('mergedReport', type: JacocoReport) {
     reports {
         xml.enabled = true
     }
+    dependsOn jacocoMerge
+    executionData jacocoMerge.destinationFile
+
+    sourceDirectories.from(subprojects.sourceSets.main.java.sourceDirectories)
+    classDirectories.from(subprojects.sourceSets.main.output)
 }
+
+
 
 
 
