@@ -9,7 +9,7 @@ buildscript {
     }
 }
 
-def allProjectCoverageFile = "$buildDir/reports/jacoco/mergedReport/mergedReport.xml"
+def allProjectCoverageFile = "$buildDir/jacoco/jacocoMerge.exec"
 
 group 'co.com.ceiba'
 version '1.0-SNAPSHOT'
