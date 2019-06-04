@@ -14,7 +14,6 @@ allprojects {
 
     apply plugin: "java"
     apply plugin: "jacoco"
-    apply plugin: "org.sonarqube:2.7.1"
     apply plugin: 'io.spring.dependency-management'
 
 
