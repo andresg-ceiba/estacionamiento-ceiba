@@ -1,11 +1,15 @@
 buildscript {
     repositories {
         mavenCentral()
+        jcenter()
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.7.1"
     }
 }
+
+def allProjectCoverageFile = "$buildDir/reports/jacoco/mergedReport/mergedReport.xml"
 
 group 'co.com.ceiba'
 version '1.0-SNAPSHOT'
@@ -15,7 +19,7 @@ allprojects {
     apply plugin: "java"
     apply plugin: "jacoco"
     apply plugin: 'io.spring.dependency-management'
-
+    apply plugin: 'org.sonarqube'
 
     sourceCompatibility = 1.8
     targetCompatibility = 1.8
@@ -46,6 +50,13 @@ allprojects {
         }
     }
 
+    sonarqube {
+        properties {
+            property "sonar.projectKey", "co.com.ceiba.estacionamiento.andres.gonzalez"
+            property "sonar.projectName", "Ceiba-Estacionamiento(andres.gonzalez)"
+            property "sonar.jacoco.reportPath", allProjectCoverageFile
+        }
+    }
 
     sourceSets {
         integrationTest {
