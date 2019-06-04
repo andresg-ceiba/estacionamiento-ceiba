@@ -69,7 +69,7 @@ allprojects {
 }
 
 task('jacocoMerge', type: JacocoMerge) {
-    executionData test, integrationTest
+    executionData = project.fileTree(dir: '.', include:'**/build/jacoco/test.exec')
 }
 
 
